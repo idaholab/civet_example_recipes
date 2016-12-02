@@ -8,7 +8,7 @@ To test another repo you would change the `APPLICATION_REPO` in the `.cfg` files
 It sets up 3 basic recipes.
 
 1. `recipes/Test.cfg`: Fetches MOOSE, builds it, and runs through various tests. This would automatically be triggered on pull requests and pushes to the `devel` branch.
-2. `recipes/Merge.cfg`: Does the actual merge from the `devel` branch to the `master` branch only if `Test` passes.
+2. `recipes/Merge.cfg`: Triggered on a push to the `devel` branch. Typically after a pull request has been accepted. This does the actual merge from the `devel` branch to the `master` branch but only if `Test` passes.
 3. `recipes/Valgrind.cfg`: Tests MOOSE with valgrind. This would automatically be triggered on pushes to the `master` branch. Typically after a succesfull `Merge`.
   Additionally, this can be manually added to pull requests.
 
