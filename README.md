@@ -5,12 +5,13 @@ These are example recipes taken from [MOOSE](https://github.com/idaholab/moose).
 These would be triggered on the repo `github.com/gituser/gitrepo` and would test MOOSE.
 To test another repo you would change the `APPLICATION_REPO` in the `.cfg` files.
 
-It sets up 3 basic recipes.
+It sets up 4 basic recipes.
 
-1. `recipes/Test.cfg`: Fetches MOOSE, builds it, and runs through various tests. This would automatically be triggered on pull requests and pushes to the `devel` branch.
-2. `recipes/Merge.cfg`: Triggered on a push to the `devel` branch. Typically after a pull request has been accepted. This does the actual merge from the `devel` branch to the `master` branch but only if `Test` passes.
-3. `recipes/Valgrind.cfg`: Tests MOOSE with valgrind. This would automatically be triggered on pushes to the `master` branch. Typically after a succesfull `Merge`.
-  Additionally, this can be manually added to pull requests.
+1. `recipes/Basic.cfg`: Just runs a very basic command. For example, on `moosebuild.org` we run a `Pre check` that does some simple checks for code formatting, ticket reference, etc. This would automatically be triggered on pull requests and pushes to the `devel` branch.
+2. `recipes/Test.cfg`: Fetches MOOSE, builds it, and runs through various tests. This would automatically be triggered on pull requests and pushes to the `devel` branch. It would not run unless `Basic` passed.
+3. `recipes/Merge.cfg`: Triggered on a push to the `devel` branch. Typically after a pull request has been accepted. This does the actual merge from the `devel` branch to the `master` branch but only if `Test` passes.
+4. `recipes/Valgrind.cfg`: Tests MOOSE with valgrind. This would automatically be triggered on pushes to the `master` branch. Typically after a succesfull `Merge`.
+  Additionally, this can be manually added to pull requests. If added to a pull request then it would only run if `Basic` passed.
 
 See `Recipe_Template.cfg` for a list of available options in the recipe file.
 
